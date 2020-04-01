@@ -1,0 +1,24 @@
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet"> 
+<body>
+<div class="parentContainer">
+  <div class="header">
+    <div class="todoTitle">ToDo List</div>
+    <div class="storage">A place to store your Todo's</div>
+    <div class="filter">Filter your To-do's</div>
+  </div>
+  <div class="list">
+    <div>
+      <ol class="tasks">
+        <li *ngFor="let tasks of todo; index as i">
+            <button *ngIf="!tasks.completed" class="complete">Completed</button>
+          <p [ngClass]="{ completedTask: tasks.completed }">{{ tasks.task }}</p>
+          <button class="xOut">X</button>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="addButton">
+    <button class="remove">Add</button>
+</div>
+</div>
+</body>
