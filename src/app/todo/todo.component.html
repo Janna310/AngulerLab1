@@ -1,24 +1,42 @@
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet"> 
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap"
+  rel="stylesheet"
+/>
 <body>
-<div class="parentContainer">
-  <div class="header">
-    <div class="todoTitle">ToDo List</div>
-    <div class="storage">A place to store your Todo's</div>
-    <div class="filter">Filter your To-do's</div>
+  <div class="parentContainer">
+    <h1 class="todoTitle">ToDo List</h1>
+    <p class="storage">A place to store your Todo's</p>
+    <form action="">
+      <input
+        [(ngModel)]="filterTasks"
+        type="text"
+        name="filter"
+        placeholder="Filter your To-do's"
+      />
+    </form>
+    <ol>
+      <!--*ngFor="let tasks of todo | todo: filterTasks"-->
+      <li *ngFor="let tasks of todo; index as i">
+        <div class="item-container">
+          <button
+            (click)="completedTask(tasks)"
+            *ngIf="!tasks.completed"
+            class="completeBtn"
+          >
+            Completed
+          </button>
+          <p [ngClass]="{ completedTask: tasks.completed }">
+            {{ tasks.task }}
+          </p>
+          <button (click)="removeTask(tasks)" class="del">
+            X
+          </button>
+        </div>
+      </li>
+    </ol>
+    <form action="">
+      <input #newTask type="text" name="todo" placeholder="Add your to-do" />
+      <button (click)="addTask(newTask.value)" class="add">Add</button>
+    </form>
   </div>
-  <div class="list">
-    <div>
-      <ol class="tasks">
-        <li *ngFor="let tasks of todo; index as i">
-            <button *ngIf="!tasks.completed" class="complete">Completed</button>
-          <p [ngClass]="{ completedTask: tasks.completed }">{{ tasks.task }}</p>
-          <button class="xOut">X</button>
-        </li>
-      </ol>
-    </div>
-  </div>
-  <div class="addButton">
-    <button class="remove">Add</button>
-</div>
-</div>
 </body>

@@ -1,0 +1,14 @@
+<div class="delLater">
+  <p>delete-later works!</p>
+  <input [(ngModel)]="whatUserTypes" type="test" placeholder="Enter Task" />
+  <h1>{{ whatUserTypes }}</h1>
+  <button class="delBtn">Enter</button>
+</div>
+
+<div
+  *ngIf="whatUserTypes !== ''"
+  [ngClass]="{ 'showbackground-color': whatUserTypes }"
+></div>
+<!-- if this returns true: if what user writes does
+not equal an empty string -->
+<h1>{{ birthday | date }}</h1>
